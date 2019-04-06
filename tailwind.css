@@ -1,0 +1,74 @@
+@tailwind preflight;
+
+@tailwind components;
+/* Responsive colour scheme. */
+.bg-rainbow {
+    @apply bg-pink-darker;
+}
+@screen sm {
+    .bg-rainbow {
+        @apply bg-pink-dark;
+    }
+}
+@screen md {
+    .bg-rainbow {
+        @apply bg-pink;
+    }
+}
+@screen lg {
+    .bg-rainbow {
+        @apply bg-pink-light;
+    }
+}
+@screen xl {
+    .bg-rainbow {
+        @apply bg-pink-lighter;
+    }
+}
+
+.text-rainbow:hover {
+    @apply text-pink-darker;
+}
+@screen sm {
+    .text-rainbow:hover {
+        @apply text-pink-dark;
+    }
+}
+@screen md {
+    .text-rainbow:hover {
+        @apply text-pink;
+    }
+}
+@screen lg {
+    .text-rainbow:hover {
+        @apply text-pink-light;
+    }
+}
+@screen xl {
+    .text-rainbow:hover {
+        @apply text-pink-lighter;
+    }
+}
+
+/* Table CSS */
+table {
+    @apply w-full text-left border shadow bg-white;
+}
+
+th {
+    @apply p-2 border-t border-grey-light;
+}
+
+td {
+    @apply p-2 border-t border-grey-light text-xs;
+}
+
+tbody {
+    @apply align-baseline;
+}
+
+tr:nth-child(even) {
+    @apply bg-pink-lightest;
+}
+
+@tailwind utilities;

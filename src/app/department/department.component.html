@@ -1,0 +1,26 @@
+<!-- department/department.component.html -->  
+<html>  
+  <head>
+    <title>Departments</title>
+  </head>
+  <body>
+      <div class="flex items-center w-full p-16 bg-grey-lighter -mt-8">
+        <table class="shadow bg-white border">
+          <thead>
+            <tr class="table-row font-semibold text-sm text-white bg-pink-light">
+              <th>Name</th>
+              <th>Description</th>
+              <th>Item Count</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let department of departments" class="table-row">
+                <td>{{department.Name}}</td>
+                <td>{{department.Description}}</td>
+                <td>{{department.ItemList.length}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>

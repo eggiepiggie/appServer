@@ -1,0 +1,57 @@
+<!-- item/item.component.html -->
+<html>  
+  <head>
+    <title>Items</title>
+  </head>
+  <body>
+    <div class="flex flex-wrap mt-4 mb-4 bg-white">
+      <div *ngFor="let d of departments" title="{{d.ItemList.length == 0 ? 'No results' : ''}}" (click)="onDepartmentClicked(d.Id)" [ngClass]="(d.ItemList.length == 0) ? 'bg-grey' : 'bg-pink-light hover:bg-white cursor-pointer'" class="group px-6 py-3 w-1/8 shadow-md mb-4 select-none mx-auto">
+        <p [ngClass]="(d.ItemList.length == 0) ? '' : 'group-hover:text-pink-light'" class="font-semibold text-md text-white mb-1">{{d.Name}}</p>
+        <p [ngClass]="(d.ItemList.length == 0) ? '' : 'group-hover:text-pink-light'" class="text-white text-xs ">{{d.Description}}</p>
+      </div>
+    </div>
+    <div *ngIf="departmentItems" class="flex h-screen w-full px-12">
+      <div class="w-1/4 p-4">
+        <app-item-details [departments]="departments" (updateDepartmentItemList)='onDepartmentClicked($event)'></app-item-details>
+      </div>
+      <div class="w-3/4 p-4">
+        <!-- TODO: Another table header for different options. -->
+        <div class="p-4 bg-white mb-4 border-t">
+          <button class="bg-pink-light border-pink-dark hover:bg-pink shadow text-white text-sm py-2 px-4 mr-2 focus:outline-none">
+            Update
+          </button>
+          <button class="bg-pink-light border-pink-dark hover:bg-pink shadow text-white text-sm py-2 px-4 focus:outline-none">
+            Delete
+          </button>
+        </div>
+        <table>
+          <thead>
+            <tr class="table-row font-semibold text-sm text-white bg-pink-light">
+              <th class="text-center"><input class="bg-grey-lighter focus:bg-white text-grey-darkest" type="checkbox"></th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Colour</th>
+              <th>Weight</th>
+              <th>Stocked?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of departmentItems">
+              <td class="text-center"><input type="checkbox" value="{{item.Id}}"></td>
+              <td>{{item.Name}}</td>
+              <td>{{item.Description}}</td>
+              <td>{{item.Colour}}</td>
+              <td>{{item.Weight}}</td>
+              <td>{{item.IsStocked ? 'Yes' : 'No'}}</td>
+            </tr>
+            <tr *ngIf="departmentItemsLength == 0">
+              <td class="text-grey-darkest text-center text-xs font-semibold bg-grey-lighter border-grey-light border-b" colspan="50">
+                No results!
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
