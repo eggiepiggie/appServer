@@ -1,0 +1,148 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <title>Stock Levels</title>
+</head>
+
+<body>
+  <div class="flex items-start w-full h-full p-4 bg-grey-light-5 -mt-8">
+    <div class="w-1/4 max-h-screen mr-4 border-t border-b table-scrollable">
+      <table>
+        <thead>
+          <tr class="table-row font-semibold text-sm text-white bg-pink-light">
+            <th>Name</th>
+            <th>Stocked?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of allItems" class="table-row" (click)="setText(item)">
+            <td>
+              <i [ngClass]="uiService.getDepartmentIcon(item.Department.Name)" class="fas pr-2"></i>
+              {{item.Name}}
+            </td>
+            <td>{{item.IsStocked ? 'Yes' : 'No'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="w-3/4 flex flex-col max-h-screen" *ngIf="currentItem">
+      <div class="flex items-start h-32 bg-grey-light-5"
+          *ngIf="currentItem.PriceHistoryList.length > 1">
+        <div class="w-1/4 flex flex-col h-full p-4 text-xs text-grey-dark">
+          <label>
+            <i class="fas fa-money-bill"></i>
+            Current Price
+          </label>
+          <label class="text-5xl text-pink-dark-1 font-sans font-medium border-r-4 border-pink-light-3">
+            {{currentItem.PriceHistoryList[currentItem.PriceHistoryList.length - 1].Price | currency}}
+          </label>
+          <label [ngClass]="currentPriceDelta != 0 ? (currentPriceDelta < 0 ? 'text-red' : 'text-green') : ''"
+          class="block">
+            <i [ngClass]="uiService.getDeltaIcon(currentPriceDelta)" class="fas"></i>
+            {{currentPriceDelta | currency}}
+            <span class="text-grey-dark"> since {{currentDateDeltaInDays}} days ago</span>
+          </label>
+        </div>
+        <div class="w-1/4 flex flex-col h-full p-4 text-xs text-grey-dark">
+          <label>
+            <i class="fas fa-chart-line"></i>
+            Average Price
+          </label>
+          <label class="text-5xl text-pink-dark-2 font-sans font-medium border-r-4 border-pink-lighter">
+            {{currentAvgPrice | currency}}
+          </label>
+          <label [ngClass]="(currentAvgPrice - currentPrice) != 0 ? ((currentAvgPrice - currentPrice) < 0 ? 'text-red' : 'text-green') : ''"
+          class="block">
+            <i [ngClass]="uiService.getDeltaIcon(currentAvgPrice - currentPrice)" class="fas"></i>
+            {{(currentAvgPrice - currentPrice) | currency}}
+            <span class="text-grey-dark"> from the current price</span>
+          </label>
+        </div>
+        <div class="w-1/4 flex flex-col h-full p-4 text-xs text-grey-dark">
+          <label>
+            <i class="fas fa-cubes"></i>
+            Stock
+          </label>
+          <label class="text-5xl font-sans font-medium text-pink-dark-3 border-r-4 border-pink-lighter">
+            {{(currentStock > 0) ? 'Yes' : 'No'}}
+          </label>
+          <label [ngClass]="(currentStock - currentAvgStock) != 0 ? ((currentStock - currentAvgStock) < 0 ? 'text-red' : 'text-green') : ''"
+          class="block">
+            <i [ngClass]="uiService.getDeltaIcon(currentStock - currentAvgStock)" class="fas"></i>
+            {{currentStock}}
+            <span class="text-grey-dark"> items left now</span>
+          </label>
+        </div>
+        <div class="w-1/4 flex flex-col h-full p-4 text-xs text-grey-dark">
+          <label>
+            <i class="fas fa-chart-line"></i>
+            Average Stock
+          </label>
+          <label class="text-5xl font-sans font-medium text-pink-dark-4 border-r-4 border-pink-lighter">
+            {{currentAvgStock}}
+          </label>
+          <label [ngClass]="(currentAvgPrice - currentPrice) != 0 ? ((currentAvgPrice - currentPrice) < 0 ? 'text-red' : 'text-green') : ''"
+          class="block">
+            <i [ngClass]="uiService.getDeltaIcon(currentAvgPrice - currentPrice)" class="fas"></i>
+            {{currentAvgStock}}
+            <span class="text-grey-dark"> left now</span>
+          </label>
+        </div>
+      </div>
+      <div class="w-full flex h-12 mb-2 p-3 bg-white justify-between font-sans shadow">
+        <div class="flex items-baseline">
+          <div class="text-xl text-pink-dark-2 mr-2">Pricing of {{currentItem.Name}}</div>
+          <div class="text-xs text-pink-dark-1">Past Month Pricing History</div>
+        </div>
+        <div class="text-xs text-pink-dark-1">
+          <button class="hover:bg-grey-light-3 focus:outline-none p-2 mr-2 rounded">
+            <i class="fas fa-caret-left text-grey-dark"></i>
+          </button>
+          <button class="hover:bg-grey-light-3 focus:outline-none p-2 rounded">
+            <i class="fas fa-caret-right text-grey-dark"></i>
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-64 bg-grey-light-1 shadow">
+        Yes
+      </div>
+    </div>
+  </div>
+  <div *ngIf="currentItem" class="flex items-center w-full p-8 bg-grey-lighter">
+    <div class="w-1/4 border border-dark-grey bg-white h-64" *ngIf="currentItem && currentItem.StockLevelList">
+      <form [formGroup]="stockLevelForm" (ngSubmit)="onSubmit()" class="p-4">
+        <div class="mb-4">
+          <label class="block uppercase text-pink-dark text-sm font-bold mb-2" for="Count">
+            Count
+          </label>
+          <input
+            class="shadow appearance-none border w-full py-2 px-3 text-xs text-grey-darker bg-grey-lighter focus:bg-white leading-tight focus:outline-none"
+            formControlName="Count" type="number">
+        </div>
+        <div class="mb-4">
+          <label class="block uppercase text-pink-dark text-sm font-bold mb-2" for="NextShipment">
+            Next Shipment
+          </label>
+          <input
+            class="shadow appearance-none border w-full py-2 px-3 text-xs text-grey-darker bg-grey-lighter focus:bg-white leading-tight focus:outline-none"
+            formControlName="NextShipment" type="date">
+        </div>
+        <div class="flex items-center">
+          <button type="submit" [disabled]="!stockLevelForm.valid"
+            [ngClass]="stockLevelForm.valid ? 'hover:bg-pink-dark' : 'opacity-50'"
+            class="uppercase shadow bg-pink text-white text-sm font-bold py-2 px-4 focus:outline-none focus:shadow-outline mr-4">
+            Add Stock
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+<svg width="100%" height="1200" class="mySvg" (click)="clicked($event)">
+  <text x="10" y="20">Click anywhere</text>
+</svg>
+</html>

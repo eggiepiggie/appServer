@@ -43,9 +43,26 @@ export class ItemService {
 
   addItem(item: Item) {
     let body = {};
-    return this.http.post<Item>(this.serverUrl + '/item', item, httpOptions)
+    return this.http.post<Item>(this.serverUrl + '/item', item)
       .pipe(
         catchError(this.handleError<any>('addItem', item))
+      )
+  }
+
+  deleteItem(itemId: number) {
+    let body = {};
+    return this.http.delete<Response>(this.serverUrl + '/item/' + itemId)
+      .pipe(
+        catchError(this.handleError<any>('deleteItem', itemId))
+      )
+  }
+
+  getStockLevels() {
+    let body = {};
+    return this.http.get<Response>(this.serverUrl + '/stockLevel')
+      .pipe(
+        tap(_ => {}),
+        catchError(this.handleError<any>('getStockLevels', []))
       )
   }
 

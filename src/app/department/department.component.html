@@ -1,6 +1,7 @@
 <!-- department/department.component.html -->  
 <html>  
   <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Departments</title>
   </head>
   <body>
@@ -15,7 +16,10 @@
           </thead>
           <tbody>
               <tr *ngFor="let department of departments" class="table-row">
-                <td>{{department.Name}}</td>
+                <td>
+                  <i [ngClass]="uiService.getDepartmentIcon(department.Name)" class="fas pr-2"></i>
+                  {{department.Name}}
+                </td>
                 <td>{{department.Description}}</td>
                 <td>{{department.ItemList.length}}</td>
               </tr>

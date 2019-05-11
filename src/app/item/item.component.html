@@ -1,6 +1,7 @@
 <!-- item/item.component.html -->
 <html>  
   <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Items</title>
   </head>
   <body>
@@ -16,18 +17,29 @@
       </div>
       <div class="w-3/4 p-4">
         <!-- TODO: Another table header for different options. -->
-        <div class="p-4 bg-white mb-4 border-t">
-          <button class="bg-pink-light border-pink-dark hover:bg-pink shadow text-white text-sm py-2 px-4 mr-2 focus:outline-none">
-            Update
-          </button>
-          <button class="bg-pink-light border-pink-dark hover:bg-pink shadow text-white text-sm py-2 px-4 focus:outline-none">
-            Delete
-          </button>
+        <div class="flex w-full bg-white">
+          <div class="pb-2 w-1/2">
+            <button [disabled]="!enableListFunction" [ngClass]="enableListFunction ? 'hover:bg-pink-light' : 'opacity-50'" title="Save" class="uppercase bg-pink-light border-grey shadow text-white text-sm font-bold py-2 px-5 mr-2 focus:outline-none">
+              <i class="far fa-edit"></i>
+            </button>
+            <button [disabled]="!enableListFunction" [ngClass]="enableListFunction ? 'hover:bg-pink-light' : 'opacity-50'" title="Delete" class="uppercase bg-pink-light border-grey shadow text-white text-sm font-bold py-2 px-5 mr-2 focus:outline-none" (click)="onDeleteClicked()">
+              <i class="far fa-trash-alt"></i>
+            </button>
+            <button [disabled]="!enableListFunction" [ngClass]="enableListFunction ? 'hover:bg-pink-light' : 'opacity-50'" title="Clear" class="uppercase bg-pink-light border-grey shadow text-white text-sm font-bold py-2 px-5 mr-2 focus:outline-none" (click)="setItemsToDisplay()">
+              <i class="far fa-minus-square"></i>
+            </button>
+          </div>
+          <div class="flex flex-row-reverse pb-2 w-1/2">
+            <input [(ngModel)]="searchText" class="py-2 px-3 bg-grey-lighter border border-grey-light focus:outline-none focus:bg-white text-grey-darkest text-sm" type="text" (input)="searchList()">
+            <span class="bg-pink-light border-t border-b border-l border-pink-light text-white text-sm py-2 px-3">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
         </div>
         <table>
           <thead>
             <tr class="table-row font-semibold text-sm text-white bg-pink-light">
-              <th class="text-center"><input class="bg-grey-lighter focus:bg-white text-grey-darkest" type="checkbox"></th>
+              <th class="text-center"><input class="bg-grey-lighter focus:bg-white text-grey-darkest" type="checkbox" [(ngModel)]="masterOptionState" (change)="masterOptionChanged()"></th>
               <th>Name</th>
               <th>Description</th>
               <th>Colour</th>
@@ -36,15 +48,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of departmentItems">
-              <td class="text-center"><input type="checkbox" value="{{item.Id}}"></td>
+            <tr *ngFor="let item of displayItems" [ngClass]="currentItemStates[item.Id] ? 'selected' : ''">
+              <td class="text-center"><input type="checkbox" name="currentItemStates" [checked]="currentItemStates[item.Id]" (change)="updateSelectedItem(item.Id)"></td>
               <td>{{item.Name}}</td>
               <td>{{item.Description}}</td>
               <td>{{item.Colour}}</td>
               <td>{{item.Weight}}</td>
               <td>{{item.IsStocked ? 'Yes' : 'No'}}</td>
             </tr>
-            <tr *ngIf="departmentItemsLength == 0">
+            <tr *ngIf="currentItemsLength == 0">
               <td class="text-grey-darkest text-center text-xs font-semibold bg-grey-lighter border-grey-light border-b" colspan="50">
                 No results!
               </td>

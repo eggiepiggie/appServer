@@ -127,6 +127,26 @@ let colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
+
+  // Eggie's Theme
+  'pink-light-5': '#FEF1F5',
+  'pink-light-4': '#FCD7E3',
+  'pink-light-3': '#FABCD1',
+  'pink-light-2': '#F9A2BF',
+  'pink-light-1': '#F787AD',
+  'pink-0': '#F66D9B',
+  'pink-dark-1': '#CA5A7F',
+  'pink-dark-2': '#9D4663',
+  'pink-dark-3': '#703247',
+  'pink-dark-4': '#5A2839',
+  'pink-dark-5': '#441E2B',
+
+  'grey-light-5': '#F7F7F7',
+  'grey-light-4': '#EBEBEB',
+  'grey-light-3': '#E3E3E3',
+  'grey-light-2': '#DBDBDB',
+  'grey-light-1': '#D3D3D3',
+  'grey-0': '#C0C0C0',
 }
 
 module.exports = {
@@ -915,7 +935,7 @@ module.exports = {
     objectFit: false,
     objectPosition: false,
     opacity: ['responsive'],
-    outline: ['focus'],
+    outline: ['focus', 'hover'],
     overflow: ['responsive'],
     padding: ['responsive'],
     pointerEvents: ['responsive'],
@@ -924,7 +944,7 @@ module.exports = {
     shadows: ['responsive', 'hover', 'focus'],
     svgFill: [],
     svgStroke: [],
-    tableLayout: ['responsive'],
+    tableLayout: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     textAlign: ['responsive'],
     textColors: ['responsive', 'hover', 'focus', 'group-hover'],
     textSizes: ['responsive'],

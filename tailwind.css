@@ -1,6 +1,16 @@
 @tailwind preflight;
 
 @tailwind components;
+
+.float-header {
+    overflow-y: auto;
+    height: 100px;
+}
+.float-header th {
+    position: sticky;
+    top: 0;
+}
+
 /* Responsive colour scheme. */
 .bg-rainbow {
     @apply bg-pink-darker;
@@ -51,12 +61,18 @@
 }
 
 /* Table CSS */
+.table-scrollable {
+    overflow-y:scroll;
+    height: 80%;
+    display: block;
+}
+
 table {
     @apply w-full text-left border shadow bg-white;
 }
 
 th {
-    @apply p-2 border-t border-grey-light;
+    @apply p-2 border border-pink-light;
 }
 
 td {
@@ -66,9 +82,22 @@ td {
 tbody {
     @apply align-baseline;
 }
-
-tr:nth-child(even) {
-    @apply bg-pink-lightest;
+tbody > tr:nth-child(even) {
+    @apply bg-pink-light-5;
 }
+tbody > tr:nth-child(odd) {
+    @apply bg-white;
+}
+tbody > tr:hover {
+    @apply bg-pink-light-4;
+}
+tbody > tr.selected {
+    @apply bg-pink-light-3;
+}
+
+/* Icon Styling for Font Awesome */
+/*i.fas, i.fab, i.far {
+    font-size: 12px;
+} */
 
 @tailwind utilities;

@@ -12,6 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { DepartmentComponent } from './department/department.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemService } from './item.service';
+import { StockLevelComponent } from './stock-level/stock-level.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ItemService } from './item.service';
     DepartmentComponent,
     ItemComponent,
     ItemDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    StockLevelComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,6 +1,6 @@
 export class PriceHistory {
   Id : number;
-  Date : string;
+  Date : Date;
   Price : number;
   ItemId : number;
 }

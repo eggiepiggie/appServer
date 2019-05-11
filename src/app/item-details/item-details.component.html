@@ -24,6 +24,9 @@
         <option value="Green">Green</option>
         <option value="Blue">Blue</option>
         <option value="Yellow">Yellow</option>
+        <option value="Purple">Purple</option>
+        <option value="White">White</option>
+        <option value="Brown">Brown</option>
       </select>
       <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -34,7 +37,7 @@
     <label class="block uppercase text-pink-dark text-sm font-bold mb-2" for="Weight">
       Weight
     </label>
-    <input class="shadow appearance-none border w-full py-2 px-3 text-xs text-grey-darker bg-grey-lighter focus:bg-white leading-tight focus:outline-none" formControlName="Weight" type="double" placeholder="e.g. 0.1">
+    <input class="shadow appearance-none border w-full py-2 px-3 text-xs text-grey-darker bg-grey-lighter focus:bg-white leading-tight focus:outline-none" formControlName="Weight" type="number" placeholder="e.g. 0.1">
   </div>
   <div class="mb-6">
     <label class="block uppercase text-pink-dark text-sm font-bold mb-2" for="Department">
@@ -50,9 +53,12 @@
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-between">
-    <button type="submit" class="uppercase shadow bg-pink hover:bg-pink-dark text-white text-sm font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
+  <div class="flex items-center">
+    <button type="submit" [disabled]="!itemForm.valid" [ngClass]="itemForm.valid ? 'hover:bg-pink-dark' : 'opacity-50'" class="uppercase shadow bg-pink text-white text-sm font-bold py-2 px-4 focus:outline-none focus:shadow-outline mr-4">
       Add
+    </button>
+    <button type="button" [disabled]="!itemForm.dirty" [ngClass]="itemForm.dirty ? 'hover:bg-pink-dark' : 'opacity-50'" class="uppercase shadow bg-pink text-white text-sm font-bold py-2 px-4 focus:outline-none focus:shadow-outline" (click)="resetForm()">
+      Clear
     </button>
   </div>
 </form>

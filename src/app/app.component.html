@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>App</title>
-    </head>
-    <nav class="flex items-center justify-between flex-wrap bg-rainbow p-6">
-      <div class="flex items-center flex-no-shrink text-white mr-6">
-        <svg class="fill-current h-8 w-8 mr-2" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><<path d="M18 9.87V20H2V9.87a4.25 4.25 0 0 0 3-.38V14h10V9.5a4.26 4.26 0 0 0 3 .37zM3 0h4l-.67 6.03A3.43 3.43 0 0 1 3 9C1.34 9 .42 7.73.95 6.15L3 0zm5 0h4l.7 6.3c.17 1.5-.91 2.7-2.42 2.7h-.56A2.38 2.38 0 0 1 7.3 6.3L8 0zm5 0h4l2.05 6.15C19.58 7.73 18.65 9 17 9a3.42 3.42 0 0 1-3.33-2.97L13 0z"/></svg>
-        <a routerLink= "/dashboard" class="font-semibold text-xl tracking-tight no-underline text-white">Eggie Market</a>
-      </div>
-      <div class="block lg:hidden">
-        <button class="flex items-center px-3 py-2 border rounded text-white border-teal-light hover:text-white hover:border-white">
-          <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-        </button>
-      </div>
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
-          <a routerLink="/items" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white no-underline mr-4">
-            Items
-          </a>
-          <a routerLink="/departments" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white no-underline mr-4">
-            Departments
-          </a>
-        </div>
-        <div>
-          <input class="shadow py-2 px-3 bg-grey-lighter border-transparent focus:bg-white text-grey-darkest text-sm" type="text" placeholder="e.g. potatoes">
-          <a href="#" class="shadow inline-block text-sm px-4 py-2 leading-none border text-white border-white hover:border-transparent no-underline text-rainbow hover:bg-white mt-4 lg:mt-0">Search</a>
-        </div>
-      </div>
-    </nav>
-    <div class="flex flex-wrap mt-6 mb-2 bg-white">
-      <!-- TODO: We want to display all the different departments of the market. -->
-      <div *ngFor="let d of departments" class="group hover:bg-white hover:border-pink-light px-6 py-3 cursor-pointer bg-pink-light w-1/8 shadow-md mb-4 select-none mx-auto">
-        <p class="font-semibold text-md text-white group-hover:text-pink-light mb-1">{{d.Name}}</p>
-        <p class="text-white text-xs group-hover:text-pink-light">{{d.Description}}</p>
-      </div>
+  <head>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+      <title>App</title>
+  </head>
+  <div class="flex flex-row block">
+    <div *ngIf="showLeftPanel" class="flex flex-col block w-1/6 bg-pink-dark-2 font-sans text-xs text-grey-light-3">
+      <label class="block p-4 text-grey-light-2">Navigation</label>
+      <a routerLink="/items" class="block p-2 lg:inline-block lg:mt-0 text-xs text-grey-light-3 hover:text-white hover:bg-pink-dark-1 no-underline border-pink-dark-1 border-l-4">
+        <i class="fas fa-cube text-center px-2"></i>
+        Items
+      </a>
+      <a routerLink="/departments" class="block p-2 lg:inline-block lg:mt-0 text-grey-light-3 hover:text-white hover:bg-pink-dark-1 no-underline border-pink-dark-1 border-l-4">
+        <i class="fas fa-city text-center px-2"></i>
+        Departments
+      </a>
+      <a routerLink="/stockLevels" class="block p-2 lg:inline-block lg:mt-0 text-grey-light-3 hover:text-white hover:bg-pink-dark-1 no-underline border-pink-dark-1 border-l-4">
+        <i class="fas fa-boxes text-center px-2"></i>
+        Stock
+      </a>
     </div>
+    <div class="w-full">
+      <nav class="flex justify-between bg-pink p-1">
+        <div class="w-1/3 lg:flex lg:items-center mr-2">
+          <button class="hover:bg-pink-light-1 focus:outline-none no-underline" (click)="toggleLeftPanel()">
+            <i class="fas fa-align-left text-white text-md text-center p-2"></i>
+          </button>
+        </div>
+        <div class="w-1/3 flex flex-col">
+          <a routerLink="/dashboard" class="text-white text-2xl text-center p-1">
+            <i class="fas fa-umbrella"></i>
+          </a>
+        </div>
+        <div class="w-1/3 flex flex-row-reverse">
+          <button class="hover:bg-pink-light-1 focus:outline-none no-underline" (click)="toggleRightPanel()">
+            <i class="fas fa-cogs text-white text-md text-center p-2"></i>
+          </button>
+        </div>
+      </nav>
+      <div class="flex h-12 bg-grey-light-5 border-light-1 border-b justify-center text-center">
+        <div class="flex w-1/2 py-2">
+          <i class="fas fa-search text-grey-dark text-center p-2 mr-1"></i>
+          <input class="flex-grow bg-grey-light-2 focus:bg-white border focus:border-grey-light-2 px-2 rounded text-sm text-grey-dark font-sans" placeholder="Search the store for a product (Press '/' to focus)">
+        </div>
+      </div>
+      <div class="flex flex-wrap mt-6 mb-2 bg-white">
+        <!-- TODO: We want to display all the different departments of the market. -->
+        <div *ngFor="let d of departments" class="group hover:bg-white hover:border-pink-light px-6 py-3 cursor-pointer bg-pink-light w-1/8 shadow-md mb-4 select-none mx-auto">
+          <p class="font-semibold text-md text-white group-hover:text-pink-light mb-1">{{d.Name}}</p>
+          <p class="text-white text-xs group-hover:text-pink-light">{{d.Description}}</p>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+    <div *ngIf="showRightPanel" class="flex flex-col block w-1/6 bg-pink-dark-2 font-sans text-xs text-grey-light-3">
+      <label class="block p-4 text-grey-light-2">Settings</label>
+      <a class="block p-2 lg:inline-block lg:mt-0 text-xs text-grey-light-3 hover:text-white hover:bg-pink-dark-1 no-underline border-pink-dark-1 border-l-4">
+        <i class="fas fa-user text-center px-2"></i>
+        Profile
+      </a>
+    </div>
+  </div>
 </html>
 
 <style>
@@ -42,5 +69,3 @@
     outline: none;
   }
 </style>
-
-<router-outlet></router-outlet>
