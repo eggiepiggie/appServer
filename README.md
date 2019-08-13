@@ -2,6 +2,10 @@
 
 This project is intended to test out some front-end technologies.  Currently this project is using Typescript, Tailwind CSS framework and D3.js.
 
+![Screenshot](/src/item-list.png?raw=true "Item List")
+
+![Screenshot](/src/item-dashboard.png?raw=true "Item Dashboard")
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
