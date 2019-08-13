@@ -1,6 +1,6 @@
-# AppServer
+# Market Webapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+This project is intended to test out some front-end technologies.  Currently this project is using Typescript, Tailwind CSS framework and D3.js.
 
 ## Development server
 
