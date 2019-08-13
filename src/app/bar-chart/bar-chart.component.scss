@@ -1,0 +1,39 @@
+app-bar-chart {
+    #chart {
+        .bar {
+            fill: #CA5A7F;
+        }
+        
+        .bar:hover {
+            fill: #F66D9B;
+        }
+        
+        .axis--x path {
+            display: none;
+        }
+
+        .axis--x g {
+            color: #5A2839;
+        }
+
+        .axis--y path, g {
+            color: #5A2839;
+        }
+
+        .bar-price {
+            fill: #F66D9B;
+        }
+
+        .bar-price:hover {
+            fill: #CA5A7F;
+        }
+
+        .bar-avg-price {
+            fill: #9D4663;
+        }
+
+        .bar-avg-price:hover {
+            fill: #703247;
+        }
+    }
+}

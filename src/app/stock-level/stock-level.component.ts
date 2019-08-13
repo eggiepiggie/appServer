@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import * as d3 from 'd3';
 
 import { ItemService } from '../item.service';
 import { UiService } from '../ui.service';
@@ -22,8 +21,6 @@ export class StockLevelComponent implements OnInit {
   currentAvgPrice: number;
   currentStock: number;
   currentAvgStock: number;
-  
-  radius = 10;
 
   stockLevelForm = new FormGroup({
     Count: new FormControl('', [Validators.required, Validators.min(0)]),
@@ -31,7 +28,8 @@ export class StockLevelComponent implements OnInit {
     ItemId: new FormControl('', [Validators.required, Validators.min(0)])
   });
 
-  constructor(private itemService : ItemService, private uiService : UiService) { }
+  constructor(private itemService : ItemService, private uiService : UiService) {
+  }
 
   ngOnInit() {
     this.itemService.getItems().subscribe(
@@ -58,6 +56,8 @@ export class StockLevelComponent implements OnInit {
       return;
     }
     else if (this.currentItem.PriceHistoryList.length < 2) {
+      this.currentPrice = 0;
+      this.currentAvgPrice = 0;
       return;
     }
 
@@ -87,6 +87,8 @@ export class StockLevelComponent implements OnInit {
       return;
     }
     else if (this.currentItem.StockLevelList.length < 1) {
+      this.currentStock = 0;
+      this.currentAvgStock = 0;
       return;
     }
 
@@ -95,19 +97,5 @@ export class StockLevelComponent implements OnInit {
 
     this.currentAvgStock = this.currentItem.StockLevelList.reduce((sum, stockEntry) => sum + stockEntry.Count, 0);
     this.currentAvgStock = this.currentAvgStock / arrayLength;
-  }
-
-  ngAfterContentInit() {
-    d3.select("p").style("color", "red");
-  }
-
-  clicked(event: any) {
-    d3.select(event.target).append('circle')
-      .attr('cx', event.x)
-      .attr('cy', event.y)
-      .attr('r', () => {
-        return this.radius;
-      })
-      .attr('fill', 'red');
   }
 }

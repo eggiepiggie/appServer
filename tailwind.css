@@ -95,6 +95,15 @@ tbody > tr.selected {
     @apply bg-pink-light-3;
 }
 
+.slide-in-left {
+    animation-name: run;
+    animation-duration: 5s;
+}
+@keyframes run {
+    0% { left: 0;}
+    100%{ left : 100%;}
+}
+
 /* Icon Styling for Font Awesome */
 /*i.fas, i.fab, i.far {
     font-size: 12px;

@@ -5,17 +5,18 @@
     <title>Items</title>
   </head>
   <body>
-    <div class="flex flex-wrap mt-4 mb-4 bg-white">
-      <div *ngFor="let d of departments" title="{{d.ItemList.length == 0 ? 'No results' : ''}}" (click)="onDepartmentClicked(d.Id)" [ngClass]="(d.ItemList.length == 0) ? 'bg-grey' : 'bg-pink-light hover:bg-white cursor-pointer'" class="group px-6 py-3 w-1/8 shadow-md mb-4 select-none mx-auto">
+    <div class="flex flex-wrap my-6 px-2 bg-white">
+      <div *ngFor="let d of departments" title="{{d.ItemList.length == 0 ? 'No results' : ''}}" (click)="onDepartmentClicked(d.Id)" [ngClass]="(d.ItemList.length == 0) ? 'bg-grey' : 'bg-pink-light hover:bg-white cursor-pointer'" class="group inline-flex flex-1 flex-col px-6 py-3 w-1/8 align-middle shadow-md select-none mx-2 font-sans">
+        <i class="mb-2 text-pink-dark-2 text-2xl fas" [ngClass]="uiService.getDepartmentIcon(d.Name)"></i>
         <p [ngClass]="(d.ItemList.length == 0) ? '' : 'group-hover:text-pink-light'" class="font-semibold text-md text-white mb-1">{{d.Name}}</p>
-        <p [ngClass]="(d.ItemList.length == 0) ? '' : 'group-hover:text-pink-light'" class="text-white text-xs ">{{d.Description}}</p>
+        <p [ngClass]="(d.ItemList.length == 0) ? '' : 'group-hover:text-pink-light'" class="text-pink-dark-1 text-xs ">{{d.Description}}</p>
       </div>
     </div>
-    <div *ngIf="departmentItems" class="flex h-screen w-full px-12">
-      <div class="w-1/4 p-4">
+    <div *ngIf="departmentItems" class="flex h-screen w-full px-4">
+      <div class="w-1/4 mr-4">
         <app-item-details [departments]="departments" (updateDepartmentItemList)='onDepartmentClicked($event)'></app-item-details>
       </div>
-      <div class="w-3/4 p-4">
+      <div class="w-3/4">
         <!-- TODO: Another table header for different options. -->
         <div class="flex w-full bg-white">
           <div class="pb-2 w-1/2">

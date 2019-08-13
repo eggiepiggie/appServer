@@ -5,8 +5,8 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
       <title>App</title>
   </head>
-  <div class="flex flex-row block">
-    <div *ngIf="showLeftPanel" class="flex flex-col block w-1/6 bg-pink-dark-2 font-sans text-xs text-grey-light-3">
+  <div class="flex flex-row block min-h-screen max-h-full">
+    <div *ngIf="showLeftPanel" class="slide-in-left flex flex-col block w-1/6 bg-pink-dark-2 font-sans text-xs text-grey-light-3">
       <label class="block p-4 text-grey-light-2">Navigation</label>
       <a routerLink="/items" class="block p-2 lg:inline-block lg:mt-0 text-xs text-grey-light-3 hover:text-white hover:bg-pink-dark-1 no-underline border-pink-dark-1 border-l-4">
         <i class="fas fa-cube text-center px-2"></i>
@@ -43,13 +43,6 @@
         <div class="flex w-1/2 py-2">
           <i class="fas fa-search text-grey-dark text-center p-2 mr-1"></i>
           <input class="flex-grow bg-grey-light-2 focus:bg-white border focus:border-grey-light-2 px-2 rounded text-sm text-grey-dark font-sans" placeholder="Search the store for a product (Press '/' to focus)">
-        </div>
-      </div>
-      <div class="flex flex-wrap mt-6 mb-2 bg-white">
-        <!-- TODO: We want to display all the different departments of the market. -->
-        <div *ngFor="let d of departments" class="group hover:bg-white hover:border-pink-light px-6 py-3 cursor-pointer bg-pink-light w-1/8 shadow-md mb-4 select-none mx-auto">
-          <p class="font-semibold text-md text-white group-hover:text-pink-light mb-1">{{d.Name}}</p>
-          <p class="text-white text-xs group-hover:text-pink-light">{{d.Description}}</p>
         </div>
       </div>
       <router-outlet></router-outlet>

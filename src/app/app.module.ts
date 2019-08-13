@@ -13,6 +13,8 @@ import { DepartmentComponent } from './department/department.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemService } from './item.service';
 import { StockLevelComponent } from './stock-level/stock-level.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { StockLevelComponent } from './stock-level/stock-level.component';
     ItemComponent,
     ItemDetailsComponent,
     SearchComponent,
-    StockLevelComponent
+    StockLevelComponent,
+    BarChartComponent,
+    LineChartComponent
   ],
   imports: [
     AppRoutingModule,

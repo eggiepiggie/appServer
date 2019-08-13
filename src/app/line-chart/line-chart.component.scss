@@ -1,0 +1,57 @@
+app-line-chart {
+    #chart {
+        .step-line {
+            fill: none;
+            stroke-width: 5.0;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            stroke-opacity: 0.2;
+        }
+
+        .step-line:hover {
+            stroke-opacity: 1;
+        }
+
+        .price {
+            stroke: #F66D9B;
+        }
+
+        .average {
+            stroke: #9D4663;
+        }
+
+        .dot-price {
+            fill: #F66D9B;
+        }
+
+        .dot-average {
+            fill: #9D4663;
+        }
+
+        g.axis {
+            color: #5A2839;
+        }
+
+        .grid path {
+            stroke: none;
+          }
+          
+        .grid line {
+            stroke: #E0E0E0;
+            shape-rendering: crispEdges;
+        }
+
+        .overlay {
+            fill: none;
+            pointer-events: all;
+        }
+    
+        .focus text {
+            font-size: 14px;
+        }
+    
+        .tooltip-price {
+            color: #5A2839;
+        }
+    }
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ItemService } from '../item.service';
+import { UiService } from '../ui.service';
 import { Department } from '../department';
 import { Item } from '../item';
 
@@ -23,7 +24,7 @@ export class ItemComponent implements OnInit {
 
   enableListFunction: boolean = false;
 
-  constructor(private itemService : ItemService) { }
+  constructor(private itemService : ItemService, private uiService : UiService) { }
 
   ngOnInit() {
     this.getDepartments();
