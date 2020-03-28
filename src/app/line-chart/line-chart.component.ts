@@ -119,8 +119,8 @@ export class LineChartComponent implements OnChanges {
       .attr("width", contentWidth + this.margin.left * 2)
       .attr("height", contentHeight + this.margin.top * 2)
       .on("mouseover", function() { focus.style("display", null); })
-      .on("mouseout", function() { focus.style("display", "none"); })
-      .on("mousemove", mousemove);
+      .on("mouseout", function() { focus.style("display", "none"); });
+      // .on("mousemove", mousemove);
 
     // This is for trend lines.
     svg.append("path")
@@ -158,24 +158,24 @@ export class LineChartComponent implements OnChanges {
       .attr("class", "grid axis")
       .call(yAxis);
 
-    function mousemove() {
-      const bisect = d3.bisector((d: PriceHistory) => d.Date).left;
-      var x0 = x.invert(d3.mouse(this)[0]),
-        i = bisectDate(data, x0, 1),
-        d0 = data[i - 1],
-        d1 = data[i],
-        d = ((x0 - d0.Date) > (d1.Date - x0)) ? d1 : d0;
-      focus.select(".dot-price").attr("transform", "translate(" + x(parseDate(d.Date.toString())) + "," + y(d.Price) + ")");
+    // function mousemove() {
+    //   const bisect = d3.bisector((d: PriceHistory) => d.Date).left;
+    //   var x0 = x.invert(d3.mouse(this)[0]),
+    //     i = bisectDate(data, x0, 1),
+    //     d0 = data[i - 1],
+    //     d1 = data[i],
+    //     d = ((x0 - new Date(d0.Date) > (d1.Date - x0)) ? d1 : d0;
+    //   focus.select(".dot-price").attr("transform", "translate(" + x(parseDate(d.Date.toString())) + "," + y(d.Price) + ")");
 
-      var a0 = x.invert(d3.mouse(this)[0]),
-        j = bisectDate(avgData, a0, 1),
-        a0 = avgData[j - 1],
-        a1 = avgData[j],
-        a = ((a0 - a0.Date) > (a1.Date - a0)) ? a1 : a0;
-      focus.select(".dot-average").attr("transform", "translate(" + x(parseDate(a.Date.toString())) + "," + y(a.Price) + ")");
+    //   var a0 = x.invert(d3.mouse(this)[0]),
+    //     j = bisectDate(avgData, a0, 1),
+    //     a0 = avgData[j - 1],
+    //     a1 = avgData[j],
+    //     a = ((a0 - a0.Date) > (a1.Date - a0)) ? a1 : a0;
+    //   focus.select(".dot-average").attr("transform", "translate(" + x(parseDate(a.Date.toString())) + "," + y(a.Price) + ")");
 
-      focus.select(".tooltip-price").text("Price: " + d3.format('$.2f')(d.Price))
-        .attr("transform", "translate(" + x(parseDate(a.Date.toString())) + "," + y((a.Price + d.Price)/2) + ")");
-    }
+    //   focus.select(".tooltip-price").text("Price: " + d3.format('$.2f')(d.Price))
+    //     .attr("transform", "translate(" + x(parseDate(a.Date.toString())) + "," + y((a.Price + d.Price)/2) + ")");
+    // }
   }
 }

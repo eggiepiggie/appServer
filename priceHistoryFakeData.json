@@ -1,0 +1,206 @@
+[
+    {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-01",
+            "Price": 1.75,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-02",
+            "Price": 1.99,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-03",
+            "Price": 1.59,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-04",
+            "Price": 1.29,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-05",
+            "Price": 1.19,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-06",
+            "Price": 1.49,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-07",
+            "Price": 1.69,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-08",
+            "Price": 1.79,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-10",
+            "Price": 1.85,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-11",
+            "Price": 2.00,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-12",
+            "Price": 2.10,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-13",
+            "Price": 2.25,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-14",
+            "Price": 1.89,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-15",
+            "Price": 1.75,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-16",
+            "Price": 1.70,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-17",
+            "Price": 1.88,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-18",
+            "Price": 1.80,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-19",
+            "Price": 1.49,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-20",
+            "Price": 1.29,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-21",
+            "Price": 1.59,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-22",
+            "Price": 1.49,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-23",
+            "Price": 1.39,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-24",
+            "Price": 1.49,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-25",
+            "Price": 1.99,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-26",
+            "Price": 1.88,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-27",
+            "Price": 2.00,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-28",
+            "Price": 2.09,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-29",
+            "Price": 1.98,
+            "ItemId": 44
+        }
+    }, {
+        "path": "{{restServerUrl}}/priceHistory",
+        "value": {
+            "Date": "2019-05-30",
+            "Price": 1.77,
+            "ItemId": 44
+        }
+    }
+]
